@@ -1,27 +1,31 @@
-<h1>Welcome! Please sign up</h1>
+<h1 class="container">Welcome! Please sign up</h1>
+
+
 
 <form id="signup" name="signup" method="POST" action="/users/signup">
-    <div>
-        <label for="name">First Name: </label>
-        <input type="text" name="firstName" required>
-    </div>
-    <div>
-        <label for="name">Last Name: </label>
-        <input type="text" name="lastName" required>
-    </div>
-    <div>
-        <label for="name"> Email: </label>
-        <input type="text" name="email" required>
-    </div>
-    <div>
-        <label for="name">Username: </label>
-        <input type="text" name="username" required>
-    </div>
-    <div>
-        <label for="name">Password: </label>
-        <input type="password" name="password" required>
-    </div>
-    <div>
-        <button type="submit">Submit</button>
-    </div>
+    <ul class="flex-outer">
+        <li>
+            <label for="name">First Name</label>
+            <input type="text" name="firstName" placeholder="Enter your first name here" required>
+        </li>
+        <li>
+            <label for="name">Last Name</label>
+            <input type="text" name="lastName" placeholder="Enter your last name here" required>
+        </li>
+        <li>
+            <label for="name">Email</label>
+            <input type="email" name="email" placeholder="Enter your email here" required>
+        </li>
+        <li>
+            <label for="name">Username</label>
+            <input type="text" name="username" placeholder="Enter your username here" required>
+        </li>
+        <li>
+            <label for="name">Password</label>
+            <input type="password" name="password" required>
+        </li>
+        <li>
+            <button type="submit">Submit</button>
+        </li>
+    </ul>
 </form>

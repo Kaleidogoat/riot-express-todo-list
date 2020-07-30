@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
+//import axios from "axios";
 
 
 export default class Login extends Component {
@@ -26,9 +26,7 @@ export default class Login extends Component {
                 </div>
 
                 <button type="submit" className="btn btn-primary btn-block">Submit</button>
-                <p className="forgot-password text-right">
-                    Forgot <a href="/forgot-password">password?</a>
-                </p>
+
             </form>
         );
     }

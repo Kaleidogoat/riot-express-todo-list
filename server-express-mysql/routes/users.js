@@ -17,6 +17,24 @@ router.get('/login', function (req, res, next) {
 router.get('/profile', function (req, res, next) {
   res.render('profile');
 });
+router.get('/home', function (req, res, next) {
+  models.users
+    .findOne({
+      where: {
+        UserId: UserId
+      },
+      attributes: ['FirstName', 'LastName', 'Username', 'Email', 'Admin']
+    })
+    .then(users => {
+      res.render('profile', {
+        Username: users.Username,
+        LastName: users.LastName,
+        FirstName: users.FirstName,
+        Email: users.Email,
+        Admin: users.Admin
+      });
+    });
+});
 
 router.post('/signup', function (req, res, next) {
   models.users
@@ -91,28 +109,57 @@ router.get('/logout', function (req, res, next) {
   res.send('Logged out');
 });
 
-router.get('/:id', function (req, res, next) {
-  let token = req.cookies.jwt;
-  let UserId = parseInt(req.params.id);
-  if (token) {
-    models.users
-      .findOne({
-        where: {
-          UserId: UserId
-        },
-        attributes: ['FirstName', 'LastName', 'Username', 'Email', 'Admin']
-      })
-      .then(users => {
-        res.render('profile', {
-          Username: users.Username,
-          LastName: users.LastName,
-          FirstName: users.FirstName,
-          Email: users.Email,
-          Admin: users.Admin
-        });
-      });
-  };
-});
+// router.get('/:id', function (req, res, next) {
+//   // let token = req.cookies.jwt;
+//   let UserId = parseInt(req.params.id);
+//   // let { Username } = req.params;
+//   // if (token) {
+//   models.users
+//     .findOne({
+//       where: {
+//         UserId: UserId
+//       },
+//       attributes: ['FirstName', 'LastName', 'Username', 'Email', 'Admin']
+//     })
+//     .then(users => {
+//       res.send('profile', {
+//         Username: users.Username,
+//         LastName: users.LastName,
+//         FirstName: users.FirstName,
+//         Email: users.Email,
+//         Admin: users.Admin
+//       });
+//     });
+// });
 
+// router.get('/:id', function (req, res, next) {
+//   let UserId = parseInt(req.params.id);
+//   console.log('test');
+//   models.users
+//     .findByPk(UserId), ({
+//       include: [{ model: models.users }],
+//       attributes: ['UserId', 'FirstName', 'LastName', 'Username']
+//     })
+//       .then(users => {
+//         // res.setHeader('Content-Type', 'application/json');
+//         res.send({
+//           Username: users.Username,
+//           LastName: users.LastName,
+//           FirstName: users.FirstName
+//         });
+//       });
+//   // console.log(users.firstName);
+// });
+router.get('/:id', function (req, res, next) {
+  models.users
+    .findByPk(parseInt(req.params.id), {
+      include: [{ model: models.users }],
+      attributes: ['UserId', 'FirstName', 'LastName', 'Username']
+    })
+    .then(users => {
+      res.setHeader('Content-Type', 'application/json');
+      res.send(JSON.stringify(users));
+    })
+});
 
 module.exports = router;

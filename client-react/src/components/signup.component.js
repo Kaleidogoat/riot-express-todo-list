@@ -32,10 +32,17 @@ export default class SignUp extends Component {
             username: this.state.username,
             password: this.state.password
         }).then(response => {
-            // refresh the data
+            alert(response.data);
             console.log(response);
             // empty the input
             // this.users.current.value = "";
+        });
+        this.setState({
+            firstName: "",
+            lastName: "",
+            email: "",
+            username: "",
+            password: ""
         });
     };
     render() {
@@ -70,7 +77,7 @@ export default class SignUp extends Component {
 
                 <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
                 <p className="forgot-password text-right">
-                    Already registered? <a href="/sign-in">sign in</a>
+                    Already registered? <a href="/login">sign in</a>
                 </p>
             </form>
         );

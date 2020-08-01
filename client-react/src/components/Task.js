@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import '../task.min.css'
+// import '../task.min.css'
 class Task extends React.Component {
   constructor(props) {
     super(props);
@@ -44,7 +44,7 @@ class Task extends React.Component {
         <ul>
           {this.state.tasks.map(p => (
             <li key={p.taskid}>
-              {p.name} : { p.complete ? "complete" : "not complete" } <button type="button" className="btn btn-success">Complete</button><button type="button" className="btn btn-danger">Delete</button>
+              {p.name} : { p.complete ? "complete" : "not complete"} <button type="button" className="btn btn-success">Complete</button><button type="button" className="btn btn-danger">Delete</button>
             </li>
           ))}
         </ul>

@@ -50,29 +50,29 @@ export default class Home extends Component {
         });
 
     };
-    punchTime = () => {
-        event.preventDefault();
-        let url = "http://localhost:3001/time/punch";
-        axios.post(url, {
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            email: this.state.email,
-            username: this.state.username,
-            password: this.state.password
-        }).then(response => {
-            alert(response.data);
-            console.log(response);
-            // empty the input
-            // this.users.current.value = "";
-        });
-        this.setState({
-            firstName: "",
-            lastName: "",
-            email: "",
-            username: "",
-            password: ""
-        });
-    };
+    // punchTime = () => {
+    //     event.preventDefault();
+    //     let url = "http://localhost:3001/time/punch";
+    //     axios.post(url, {
+    //         firstName: this.state.firstName,
+    //         lastName: this.state.lastName,
+    //         email: this.state.email,
+    //         username: this.state.username,
+    //         password: this.state.password
+    //     }).then(response => {
+    //         alert(response.data);
+    //         console.log(response);
+    //         // empty the input
+    //         // this.users.current.value = "";
+    //     });
+    //     this.setState({
+    //         firstName: "",
+    //         lastName: "",
+    //         email: "",
+    //         username: "",
+    //         password: ""
+    //     });
+    // };
 
 
     render() {

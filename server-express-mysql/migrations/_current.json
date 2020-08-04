@@ -1,0 +1,13 @@
+{
+    "tables": {
+        "time": {
+            "tableName": "time",
+            "indexes": []
+        },
+        "users": {
+            "tableName": "users",
+            "indexes": []
+        }
+    },
+    "revision": 1
+}

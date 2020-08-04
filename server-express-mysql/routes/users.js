@@ -153,8 +153,8 @@ router.get('/logout', function (req, res, next) {
 router.get('/:id', function (req, res, next) {
   models.users
     .findByPk(parseInt(req.params.id), {
-      include: [{ model: models.users }],
-      attributes: ['UserId', 'FirstName', 'LastName', 'Username']
+      //include: [{ model: models.users }],
+      attributes: ['UserId', 'FirstName', 'LastName', 'Username', "Email"]
     })
     .then(users => {
       res.setHeader('Content-Type', 'application/json');

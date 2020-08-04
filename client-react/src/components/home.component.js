@@ -2,19 +2,19 @@ import React, { Component } from "react";
 import axios from "axios";
 
 export default class Home extends Component {
-
     constructor(props) {
-        let id = prompt("Enter UserId to Continue");
+
         super(props);
         this.state = {
-            UserId: id,
+            UserId: "",
             FirstName: "",
             LastName: "",
-            apiUrl: "http://localhost:3001/users/" + id
+            apiUrl: ""
         };
 
         this.handleChange = this.handleChange.bind(this);
     }
+
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
@@ -29,11 +29,12 @@ export default class Home extends Component {
     //     });
 
     getUser = (event) => {
+
         event.preventDefault();
         // console.log(UserId)
         // let UserId = this.state.UserId;
-        let url = "http://localhost:3001/users/";
-        axios.get(this.state.apiUrl, {
+        let url = "http://localhost:3001/users/" + this.state.UserId
+        axios.get(url, {
 
 
         }).then(response => {
@@ -50,42 +51,42 @@ export default class Home extends Component {
         });
 
     };
-    // punchTime = () => {
-    //     event.preventDefault();
-    //     let url = "http://localhost:3001/time/punch";
-    //     axios.post(url, {
-    //         firstName: this.state.firstName,
-    //         lastName: this.state.lastName,
-    //         email: this.state.email,
-    //         username: this.state.username,
-    //         password: this.state.password
-    //     }).then(response => {
-    //         alert(response.data);
-    //         console.log(response);
-    //         // empty the input
-    //         // this.users.current.value = "";
-    //     });
-    //     this.setState({
-    //         firstName: "",
-    //         lastName: "",
-    //         email: "",
-    //         username: "",
-    //         password: ""
-    //     });
-    // };
+    punchTimein = () => {
+        let url = "http://localhost:3001/time/punch";
+        axios.post(url, {
+            UserId: this.state.UserId
+        }).then(response => {
+            alert(response.data);
+            console.log(response);
+            // empty the input
+            // this.users.current.value = "";
+        });
 
+    };
 
+    handleIdInput(event) {
+        this.setState({
+            UserId: event.target.value,
+            FirstName: "",
+            LastName: ""
+        });
+        console.log(this.state.UserId + this.state.apiUrl)
+    }
+    handleChangeId = ({ target }) => {
+        this.setState({ [target.name]: target.value });
+    };
     render() {
         return (
             <form onSubmit={this.getUser}>
-                <h3>Hours this week</h3>
+
 
                 <div className="form-group">
                     <label>User Id</label>
+                    <input type="text" onChange={this.handleChangeId} name="UserId" value={this.state.UserId} ></input>
                     {/* <label value={this.state.UserId} onChange={this.handleChange} name="UserId" placeholder="UserId"> </label> */}
-                    <p value={this.state.UserId}>     {this.state.UserId}</p>
+
                 </div>
-                <button id="time_button">Punch Time Clock</button>
+                <button onClick={this.punchTimein} id="time_button">Punch In</button>
                 <table>
                     <tbody>
                         <tr>

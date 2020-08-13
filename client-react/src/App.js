@@ -3,7 +3,7 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import Login from "./components/login.component";
+import Profile from "./components/profile.component";
 import SignUp from "./components/signup.component";
 import Home from "./components/home.component";
 
@@ -15,7 +15,7 @@ function App() {
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <Link className="nav-link" to={"/login"}>Login</Link>
+                <Link className="nav-link" to={"/profile"}>Profile</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to={"/signup"}>Sign up</Link>
@@ -31,9 +31,10 @@ function App() {
       <div className="auth-wrapper">
         <div className="auth-inner">
           <Switch>
-            <Route exact path='/' component={Login} />
-            <Route path="/login" component={Login} />
+            <Route exact path='/' component={SignUp} />
+           
             <Route path="/signup" component={SignUp} />
+           
             {/* <Route path="/tasks" component={Task} /> */}
             <Route path="/home" component={Home} />
           </Switch>

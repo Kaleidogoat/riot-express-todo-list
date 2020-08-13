@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Profile from "./profile.component";
 
 export default class Home extends Component {
     constructor(props) {
@@ -77,6 +79,8 @@ export default class Home extends Component {
     };
     render() {
         return (
+            <React.Fragment>
+            <div>
             <form onSubmit={this.getUser}>
 
 
@@ -105,8 +109,13 @@ export default class Home extends Component {
                 <div className="form-group">
                     <label>Hours:</label>
                 </div>
-                <button type="submit">Go</button>
+                
+                
             </form>
+            </div>
+           
+                <Profile userid={this.state.UserId}/>
+            </React.Fragment>
         )
     }
-}
+};

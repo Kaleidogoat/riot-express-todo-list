@@ -48,7 +48,7 @@ export default class SignUp extends Component {
     render() {
         return (
             <form onSubmit={this.addUser}>
-                <h3>Sign Up</h3>
+                <h3>Sign up</h3>
 
                 <div className="form-group">
                     <label>First name</label>
